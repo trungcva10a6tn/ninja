@@ -16,7 +16,6 @@ function naruto(x,y) {
         var sum=this.y+10;
         if (sum>=0&&sum<490){
             this.y=sum;
-            console.log(this.x+"ádasdasd"+this.y);
         }
     }
     this.up= function () {
@@ -24,7 +23,6 @@ function naruto(x,y) {
         if (sum>=0&&sum<490){
             this.y=sum;
         }
-        console.log(this.x+"ádasdasd"+this.y);
     }
 
     this.left= function () {
@@ -32,14 +30,12 @@ function naruto(x,y) {
         if (sum>=0&&sum<530){
             this.x=sum;
         }
-        console.log(this.x+"ádasdasd"+this.y);
     }
     this.right=function () {
         var sum=this.x+10;
         if (sum>=0&&sum<530){
             this.x=sum;
         }
-        console.log(this.x+"ádasdasd"+this.y);
     }
 }
 function evil(x,y) {
@@ -105,7 +101,7 @@ function ai() {
     evil.mov_ai();
     evil.get_evil();
     naruto.get_naruto();
-    // attack();
+    attack();
     setTimeout(ai,1);
 }
 function attack() {
@@ -113,23 +109,28 @@ function attack() {
     var x2=evil.x;
     var y1=naruto.y;
     var y2=evil.y;
+    var size=50;
+    var count=0;
     if(x1 < x2){
-        if (x2-x1<evil.width){
-            alert("Bạn đã thua");
+        if (x2-x1 < size){
+            count += 1;
         }
     }else {
-        if (x1-x2<naruto.width){
-            alert("Bạn đã thua");
+        if (x1-x2 < size){
+            count += 1;
         }
     }
     if(y1 < y2){
-        if (y2-y1<evil.height){
-            alert("Bạn đã thua");
+        if (y2-y1 < size){
+            count += 1;
         }
     }else {
-        if (y1-y2<naruto.height){
-            alert("Bạn đã thua");
+        if (y1-y2 < size){
+            count += 1;
         }
+    }
+    if (count > 1){
+    alert("bạn đã thua");
     }
 }
 function movi(event) {
