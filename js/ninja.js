@@ -1,4 +1,3 @@
-var dx=0;dy=0;
 function naruto(x,y) {
     var c = document.getElementById("GameNinja");
     var ctx = c.getContext("2d");
@@ -45,19 +44,24 @@ function evil(x,y) {
     img.src = 'img/panda.png';
     this.x=x;
     this.y=y;
+    this.dx=0;
+    this.dy=0;
     this.width= img.width/10;
     this.height= img.height/10;
     this.get_evil= function () {
         ctx.clearRect(0,0,600,600);
         ctx.drawImage(img,this.x,this.y,this.width,this.height);
-
+    }
+    this.random_dx_dy=function () {
+        this.dx=random_dx_dy();
+        this.dy=random_dx_dy();
     }
     this.mov_ai= function () {
-        if (this.x === dx){
-            if (this.y===dy){
-                random_dx_dy();
+        if (this.x === this.dx){
+            if (this.y === this.dy){
+                this.random_dx_dy();
             }else {
-                if(this.y>dy){
+                if(this.y > this.dy){
                     var sum=this.y-1;
                     if(sum >= 0&&sum < 550){
                         this.y=sum;
@@ -71,7 +75,7 @@ function evil(x,y) {
             }
            
         }else {
-            if(this.x > dx){
+            if(this.x > this.dx){
                 var sum=this.x-1;
                 if(sum >= 0 && sum < 550){
                     this.x=sum;
@@ -85,10 +89,11 @@ function evil(x,y) {
         }
     }
 }
+
 function random_dx_dy() {
-    dx=Math.floor((Math.random() * 550));
-    dy=Math.floor((Math.random() * 550));
+    return Math.floor((Math.random() * 550));
 }
+
 var naruto = new naruto(0,0);
 var evil =new evil(300,300);
 
@@ -104,6 +109,7 @@ function ai() {
     attack();
     setTimeout(ai,1);
 }
+
 function attack() {
     var x1=naruto.x;
     var x2=evil.x;
