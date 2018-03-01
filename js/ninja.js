@@ -10,26 +10,26 @@ function naruto(x,y) {
     this.height= img.height/10;
     this.get_naruto= function () {
         ctx.drawImage(img,this.x,this.y,this.width,this.height);
-    }
+    };
     this.down=function () {
         var sum=this.y+10;
         if (sum>=0&&sum<490){
             this.y=sum;
         }
-    }
+    };
     this.up= function () {
         var sum=this.y-10;
         if (sum>=0&&sum<490){
             this.y=sum;
         }
-    }
+    };
 
     this.left= function () {
         var sum=this.x-10;
         if (sum>=0&&sum<530){
             this.x=sum;
         }
-    }
+    };
     this.right=function () {
         var sum=this.x+10;
         if (sum>=0&&sum<530){
@@ -48,42 +48,43 @@ function evil(x,y) {
     this.dy=0;
     this.width= img.width/10;
     this.height= img.height/10;
+    this.sum = 0;
     this.get_evil= function () {
         ctx.clearRect(0,0,600,600);
         ctx.drawImage(img,this.x,this.y,this.width,this.height);
-    }
+    };
     this.random_dx_dy=function () {
         this.dx=random_dx_dy();
         this.dy=random_dx_dy();
-    }
+    };
     this.mov_ai= function () {
         if (this.x === this.dx){
             if (this.y === this.dy){
                 this.random_dx_dy();
             }else {
                 if(this.y > this.dy){
-                    var sum=this.y-1;
-                    if(sum >= 0&&sum < 550){
-                        this.y=sum;
+                    this.sum=this.y-1;
+                    if(this.sum >= 0&&this.sum < 550){
+                        this.y=this.sum;
                     }
                 }else {
-                    var sum=this.y+1;
-                    if(sum >= 0&&sum < 550){
-                        this.y=sum;
+                    this.sum=this.y+1;
+                    if(this.sum >= 0&&this.sum < 550){
+                        this.y=this.sum;
                     }
                 }
             }
            
         }else {
             if(this.x > this.dx){
-                var sum=this.x-1;
-                if(sum >= 0 && sum < 550){
-                    this.x=sum;
+                this.sum=this.x-1;
+                if(this.sum >= 0 && this.sum < 550){
+                    this.x=this.sum;
                 }
             }else {
-                var sum=this.x+1;
-                if(sum>=0&&sum<550){
-                    this.x=sum;
+                this.sum=this.x+1;
+                if(this.sum>=0&&this.sum<550){
+                    this.x=this.sum;
                 }
             } 
         }
@@ -95,8 +96,8 @@ function random_dx_dy() {
 }
 
 var naruto = new naruto(0,0);
-var evil =new evil(300,300);
-
+var evil = new evil(300,300);
+var sum = 0;
 function start() {
     naruto.get_naruto();
     evil.get_evil();
@@ -136,7 +137,8 @@ function attack() {
         }
     }
     if (count > 1){
-    alert("bạn đã thua");
+        sum+=100;
+        document.getElementById("point").innerHTML=sum;
     }
 }
 function movi(event) {
@@ -145,16 +147,16 @@ function movi(event) {
     var up=38;
     var left=37;
     var right=39;
-    if (key==down){
+    if (key === down){
         naruto.down();
     }
-    if (key==up){
+    if (key === up){
         naruto.up();
     }
-    if (key==left){
+    if (key === left){
         naruto.left();
     }
-    if (key==right){
+    if (key === right){
         naruto.right();
     }
 }
