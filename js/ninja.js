@@ -1,4 +1,4 @@
-function naruto(x,y) {
+function js_naruto(x,y) {
     var c = document.getElementById("GameNinja");
     var ctx = c.getContext("2d");
     var img=new Image();
@@ -37,7 +37,7 @@ function naruto(x,y) {
         }
     }
 }
-function evil(x,y) {
+function js_evil(x,y) {
     var c = document.getElementById("GameNinja");
     var ctx = c.getContext("2d");
     var img=new Image();
@@ -95,8 +95,8 @@ function random_dx_dy() {
     return Math.floor((Math.random() * 550));
 }
 
-var naruto = new naruto(0,0);
-var evil = new evil(300,300);
+var naruto = new js_naruto(0,0);
+var evil = new js_evil(300,300);
 var sum = 0;
 function start() {
     naruto.get_naruto();
@@ -137,7 +137,7 @@ function attack() {
         }
     }
     if (count > 1){
-        sum+=100;
+        sum+=1;
         document.getElementById("point").innerHTML=sum;
     }
 }

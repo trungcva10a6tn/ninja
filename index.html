@@ -3,12 +3,31 @@
     <head>
         <meta charset="UTF-8">
         <title>NINJA</title>
-
+        <img src="img/panda.png" hidden height="720" width="655"/>
+        <img hidden src="img/ki.png"/>
+        <style>
+            .main div{
+                float: left;
+            }
+            .bnt-run{
+                background: white;
+                padding: 10px 20px;
+                font-size: 20px;
+                border-radius: 5px;
+            }
+            .bnt-run:hover{
+                background: gainsboro;
+            }
+        </style>
     </head>
     <body style="text-align: center;" onkeydown="movi(event)">
-        <canvas id="GameNinja" width="600" height="600" style="border: 1px solid black; background: #00FF26;"></canvas>
-        <button onclick="start()">ấn đê</button>
-        <div id="point">0</div>
-        <script src="js/ninja.js"></script>
+        <div class="main">
+            <div>
+                <canvas id="GameNinja" width="600" height="600" style="border: 1px solid black; background: #00FF26;"></canvas>
+                <button class="bnt-run" onclick="start()">ấn đê</button>
+            </div>
+            <div id="point" >0</div>
+        </div>
     </body>
+    <script src="js/ninja.js" async></script>
 </html>
